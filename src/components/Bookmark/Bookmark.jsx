@@ -1,11 +1,16 @@
 'use client'
 
-const Bookmark = ({isBookmarked}) => {
+import { toggleBookMark } from "@/lib/action"
+import { useRouter } from "next/navigation"
 
+const Bookmark = ({isBookmarked, id}) => {
 
-    const handleBookmark = () => {
-        console.log('bookmark toggled');
-    }
+  const router = useRouter();
+
+  const handleBookmark = async () => {
+    await toggleBookMark(isBookmarked, id)
+    router.refresh();
+  }
 
     return (
         <button className='absolute right-2 top-2 z-50 grid h-8 w-8 cursor-pointer place-content-center rounded-full bg-bgHalfOpacity transition-all hover:bg-text hover:text-bg md:right-4 md:top-4' onClick={handleBookmark}>

@@ -12,7 +12,7 @@ const Thumbnail = ({media}) => {
             <figure className='flex flex-col gap-2'>
                 <div className='group cursor-pointer relative overflow-hidden rounded-lg lg:w-[280px] lg:h-[174px] md:w-[220px] md:h-[140px] w-[164px] h-[110px]'>
                     <Image src={media.thumbnail.regular.large.substring(1)} fill/>
-                    <Bookmark isBookmarked = {media.isBookmarked} />
+                    <Bookmark isBookmarked = {media.isBookmarked} id={media._id.toString()} />
                     <PlayMedia/>
                 </div>
                 <figcaption className='z-50 flex flex-col gap-[0.3125rem]'>
