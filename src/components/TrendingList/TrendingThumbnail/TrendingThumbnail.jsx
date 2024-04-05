@@ -1,25 +1,15 @@
 import Bookmark from '@/components/Bookmark/Bookmark';
 import PlayMedia from '@/components/PlayMedia/PlayMedia';
+import { getIconPath } from '@/lib/utils';
 import Image from 'next/image'
+
 
 const TrendingThumbnail = ({media}) => {
 
-
-    let iconPath; 
-
-    switch (media.category) {
-        case 'Movie':
-            iconPath = '/assets/icon-nav-movies.svg';
-            break;
-        case 'TV Series':
-            iconPath = '/assets/icon-nav-tv-series.svg';
-            break;
-        default: 
-            iconPath = '/assets/logo.svg'
-    }
+    const iconPath = getIconPath(media.category);
 
     return (
-        <li>
+        <li key={media._id}>
             <figure className='relative flex flex-col gap-2'>
                 <div className='group cursor-pointer relative overflow-hidden rounded-lg  md:w-[470px] md:h-[230px] w-[240px] h-[140px]'>
                     <Image src={media.thumbnail.regular.large.substring(1)} fill style={{objectFit:'cover'}}/>
