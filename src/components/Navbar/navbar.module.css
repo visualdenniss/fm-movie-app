@@ -1,0 +1,9 @@
+@media screen and (min-width: 768px) {
+  .navbar {
+    height: calc(100vh - 4rem);
+  }
+}
+
+.icon {
+  fill: #fc4747;
+}

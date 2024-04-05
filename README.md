@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Styles:
 
-## Getting Started
+Accent:
+#FC4747
 
-First, run the development server:
+BG:
+#10141E
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#5A698F
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+BG Secondary:
+#161D2F
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Text:
+#FFFFFF
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+TEXT:
 
-## Learn More
+Font Family: Outfit Light
 
-To learn more about Next.js, take a look at the following resources:
+Heading Large: 32px (Outfit Light) (Character Spacing (AV) = -15,6 in Adobe XD)
+Heading Med: 24px (Outfit Light)
+Heading S: 24px Outfit Medium
+Heading XS: 18px Outfit Medium
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Body M - (Outfit Light) 15px
+Body S -(Outfit Light) 13px (opacity .75)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+TODOS:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Trending CSS / Responsive +
+Sign UP / Login CSS +
+Connect DB - Populate DB
+API
+Add / Edit Bookmark Data
+Search Function
