@@ -18,7 +18,7 @@ export default async function Home({searchParams}) {
       <Search placeholder={"TV Series or Movies"}/>
       <main className="h-screen max-h-screen overflow-y-scroll">
         {!query && <section className='space-y-6 mb-6'>
-          <h1 className='text-[20px] md:text-3xl font-light'>Trending</h1>
+          <h1 className='text-[20px] md:text-3xl font-light'>Trending on Zetflix</h1>
             <ul className='flex gap-3 md:gap-10 trendingList overflow-x-scroll'>
               <Suspense fallback={<LoadingTrending/>}>
                 <TrendingList/>
