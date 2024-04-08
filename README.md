@@ -31,14 +31,14 @@ TODOS:
 Trending CSS / Responsive +
 Sign UP / Login CSS +
 Connect DB - Populate DB +
-API
 Add / Edit Bookmark Data +
 Notification / Toaster +
 Loading Skeleton +
+Search Functions +
 Login with Social Media
 Add Social Media Acc to users database
-Search Functions +
 Animations
 Query Data directly instead of filter/map with JS after getting all the media list. +
 Pagination.
 Fix jarring Skeleton
+Use 3rd party API

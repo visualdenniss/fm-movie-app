@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '../loading'
+import Loading from '../../../components/loading'
 import Bookmarked from './Bookmarked';
 import Search from '@/components/Search/Search';
 

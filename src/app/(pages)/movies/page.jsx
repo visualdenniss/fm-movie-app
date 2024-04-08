@@ -1,6 +1,6 @@
 import Movies from './Movies'
 import { Suspense } from 'react';
-import Loading from '../loading'
+import Loading from '../../../components/loading'
 import Search from '@/components/Search/Search';
 
 const MoviesPage = ({searchParams}) => {

@@ -4,7 +4,7 @@ import TrendingList from "@/components/TrendingList/TrendingList";
 import { Suspense } from "react";
 import LoadingTrending from "@/components/TrendingList/Loading";
 import RecommendedList from "@/components/Recommended/Recommended";
-import Loading from "./(pages)/loading";
+import Loading from "../components/loading";
 // import { getLocalData } from "@/lib/localdata";
 
 export default async function Home({searchParams}) {

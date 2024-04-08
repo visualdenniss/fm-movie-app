@@ -1,6 +1,6 @@
 import TvSeries from './TvSeries';
 import { Suspense } from 'react';
-import Loading from '../loading'
+import Loading from '../../../components/loading'
 import Search from '@/components/Search/Search';
 
 const TvSeriesPage = ({searchParams}) => {
