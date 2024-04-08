@@ -2,6 +2,7 @@
 
 import { toggleBookMark } from "@/lib/action"
 import { useRouter } from "next/navigation"
+import { toast } from 'sonner'
 
 const Bookmark = ({isBookmarked, id}) => {
 
@@ -10,6 +11,7 @@ const Bookmark = ({isBookmarked, id}) => {
   const handleBookmark = async () => {
     await toggleBookMark(isBookmarked, id)
     router.refresh();
+    toast('Bookmark updated')
   }
 
     return (

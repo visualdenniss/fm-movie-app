@@ -11,7 +11,7 @@ const Thumbnail = ({media}) => {
         <li key={media._id}>
             <figure className='flex flex-col gap-2'>
                 <div className='group cursor-pointer relative overflow-hidden rounded-lg lg:w-[280px] lg:h-[174px] md:w-[220px] md:h-[140px] w-[164px] h-[110px]'>
-                    <Image src={media.thumbnail.regular.large.substring(1)} fill/>
+                    <Image src={media.thumbnail.regular.large.substring(1)} fill alt=""/>
                     <Bookmark isBookmarked = {media.isBookmarked} id={media._id.toString()} />
                     <PlayMedia/>
                 </div>
@@ -20,7 +20,7 @@ const Thumbnail = ({media}) => {
                         <span>{media.year}</span>
                         <span>•</span>
                         <span className='flex items-center gap-1'>
-                            <Image src={iconPath} width={12} height={14}></Image>
+                            <Image src={iconPath} width={12} height={14} alt=""></Image>
                             {media.category}
                         </span>
                         <span>•</span>

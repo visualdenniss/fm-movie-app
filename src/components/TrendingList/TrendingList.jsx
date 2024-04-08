@@ -1,10 +1,12 @@
+import { getTrendingList } from "@/lib/action";
 import TrendingThumbnail from "./TrendingThumbnail/TrendingThumbnail"
 
-const TrendingList = ({medialist}) => {
 
+const TrendingList = async () => {
+    const trendingList = await getTrendingList();
     return (
         <>
-            {medialist.map((media)=> {
+            {trendingList.map((media)=> {
                 return  <TrendingThumbnail media={media} key={media._id}/>
             })}
         </>

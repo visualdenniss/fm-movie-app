@@ -33,4 +33,12 @@ Sign UP / Login CSS +
 Connect DB - Populate DB +
 API
 Add / Edit Bookmark Data +
-Search Function
+Notification / Toaster +
+Loading Skeleton +
+Login with Social Media
+Add Social Media Acc to users database
+Search Functions +
+Animations
+Query Data directly instead of filter/map with JS after getting all the media list. +
+Pagination.
+Fix jarring Skeleton

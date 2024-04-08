@@ -1,17 +1,24 @@
 "use server"
 
+// import { unstable_noStore as noStore } from 'next/cache';
 import { Media } from "./models";
 import { connectToDb } from "./utils"
 
-export const getMediaList = async () => {
+export const getMediaList = async (query) => {
     try {
+        // Connect to the database if not already connected
         connectToDb();
-        const mediaList = await Media.find(); 
+
+        // Define the search criteria based on the query
+        const searchCriteria = query ? { title: { $regex: query, $options: 'i' } } : {};
+
+        // Fetch media items based on the search criteria
+        const mediaList = await Media.find(searchCriteria);
+
         return mediaList;
-    } catch(err)
-    {
+    } catch (err) {
         console.log(err);
-        return {error: "Couldn't connect to database"}
+        return { error: "Couldn't connect to database" };
     }
 }
 
@@ -31,3 +38,72 @@ export const toggleBookMark = async (isBookmarked, id) => {
         return { error: "Something went wrong!" };
     }
 }
+
+
+export const getMovieList = async (query) => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Define the search criteria based on the query
+        const searchCriteria = query ? { category: 'Movie', title: { $regex: query, $options: 'i' } } : { category: 'Movie' };
+
+        // Fetch movies based on the search criteria
+        const movieList = await Media.find(searchCriteria);
+        return movieList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getTvSeriesList = async (query) => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Define the search criteria based on the query
+        const searchCriteria = query ? { category: 'TV Series', title: { $regex: query, $options: 'i' } } : { category: 'TV Series' };
+
+        // Fetch TV series based on the search criteria
+        const tvList = await Media.find(searchCriteria);
+
+        return tvList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getBookmarked = async (query) => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Define the search criteria based on the query
+        const searchCriteria = query ? { isBookmarked: true, title: { $regex: query, $options: 'i' } } : { isBookmarked: true };
+
+        // Fetch bookmarked media items based on the search criteria
+        const bookmarkedList = await Media.find(searchCriteria);
+
+        return bookmarkedList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getTrendingList = async () => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Fetch only the media items with the "Movie" category
+        const trendingList = await Media.find({ isTrending: true });
+        return trendingList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+

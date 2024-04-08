@@ -1,3 +1,4 @@
+import Notification from "@/components/Toaster/Toaster";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${outfit.className} min-h-screen md:p-8 gap-3 flex flex-col md:flex-row bg-bg text-white`}>
+          <Notification/>
           {children}
       </body>
     </html>

@@ -1,14 +1,13 @@
 import Navbar from "@/components/Navbar/Navbar"
 import Search from "@/components/Search/Search"
+import Notification from "@/components/Toaster/Toaster"
 
 const layout = ({children}) => {
     return (
         <>
+        <Notification/>
         <Navbar/>
-        <div className='flex-1 px-4 flex flex-col md:pt-5 gap-6'>
-          <Search/>
           {children}
-        </div>
         </>
     )
 }
