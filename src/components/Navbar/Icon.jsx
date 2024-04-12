@@ -8,6 +8,8 @@ const Icon = ({ icon, alt }) => {
         return <MoviesIcon alt={alt} />;
       case 'tv-series':
         return <TVIcon alt={alt} />;
+      case 'anime':
+        return <AnimeIcon alt={alt} />;
       default:
         return null;
     }
@@ -51,3 +53,15 @@ const HomeIcon = () => (
       />
     </svg>
   );
+
+
+  const AnimeIcon = () => (
+    <svg className='rotateOnHover' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 100 100" id="cursedSeal">
+        <g id="tomoe1">
+          <circle cx="50" cy="25" r="17.5" fill='currentColor' id="tomoe1a"/>
+          <path d="M 32.5,24.3 C 32,7.9 56.9,-6.8 71.7,7.7 65.8,4.9 57,6 54.9,8.9 Z" fill='currentColor' id="tomoe1b"/>
+        </g>
+        <use href="#tomoe1" transform="rotate(120 50 50)" fill='currentColor' id="tomoe2"/>
+        <use href="#tomoe1" transform="rotate(-120 50 50)" fill='currentColor' id="tomoe3"/>
+    </svg>
+  )

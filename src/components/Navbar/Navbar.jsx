@@ -24,6 +24,11 @@ const links = [
         path: "/bookmarked",
         icon: "bookmarked",
     },
+    {
+        title: "AnimeAPI",
+        path: "/animesapi",
+        icon: "anime",
+    },
 ]
 
 const Navbar = () => {

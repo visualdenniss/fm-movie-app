@@ -36,3 +36,13 @@
     max-width: calc(100vw - 220px);
   }
 }
+
+/* Spin the sharingan icon */
+
+.rotateOnHover {
+  transition: transform 0.65s cubic-bezier(0.25, 0.1, 0.25, 0.7); /* Smooth transition with cubic bezier */
+}
+
+.rotateOnHover:hover {
+  transform: rotate(720deg); /* Rotate by 360 degrees on hover */
+}

@@ -2,10 +2,11 @@
 
 import Image from 'next/image'
 
-const PlayMedia = () => {
+const PlayMedia = ({url}) => {
 
 const handlePlay = () => {
     console.log('playing...');
+    console.log({url});
 }
     return (
         <div className='absolute inset-0 hidden place-content-center bg-black/50 group-hover:grid'>

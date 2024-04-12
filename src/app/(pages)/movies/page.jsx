@@ -10,7 +10,7 @@ const MoviesPage = ({searchParams}) => {
           <Search placeholder={"Movies"}/>
       <main className='h-screen max-h-screen overflow-y-scroll'>
             <section className=' space-y-6 lg:mx-0'>
-            <h2 className='text-[20px] md:text-3xl font-light '> Movies</h2>
+            <h2 className='text-[20px] md:text-3xl font-light'> Movies</h2>
                 <ul className='medialist'>
                 <Suspense fallback={<Loading/>}>
                     <Movies query={query}/>
