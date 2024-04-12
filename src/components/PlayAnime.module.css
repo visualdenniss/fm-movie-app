@@ -1,0 +1,46 @@
+/* PlayMedia.module.css */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* Half-transparent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modalContent {
+  width: 90vw;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  background-color: #161d2f;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; /* Apply the pulse animation */
+}
+
+.modalContent iframe {
+  aspect-ratio: 16 / 9;
+  width: 100% !important;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #10141e; /* Start with text-gray-200 */
+  }
+  50% {
+    background-color: #161d2f; /* Pulse to text-gray-300 */
+  }
+  100% {
+    background-color: #10141e; /* Return to text-gray-200 */
+  }
+}
+
+/* bg: "#10141E",
+bgSecondary: "#161D2F",
+bgSoft: "#5A698F", */

@@ -1,24 +1,18 @@
 // PlayMedia.jsx
 'use client'
 
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from '../PlayAnime.module.css'; // Import CSS module
-import { fetchTMDBVideo } from '@/lib/action';
+import styles from './PlayAnime.module.css'; // Import CSS module
+import { fetchAnimeVideo } from '@/lib/action';
 
-const PlayMedia = ({id}) => {
+const PlayMedia = ({ id }) => {
   const [videoData, setVideoData] = useState(null); // State to store video data
   const [showModal, setShowModal] = useState(false); // State to control modal visibility
-  const [videoURLS, setVideoURLS] = useState([])
 
   const handlePlay = async () => {
-    if(id) {
-      const data = await fetchTMDBVideo(id);
-      setVideoData(data);
-      const trailers = data.results.filter((item)=>item.type === 'Trailer')
-      setVideoURLS(trailers);
-      console.log(videoData);
-    }
+    const data = await fetchAnimeVideo(id);
+    setVideoData(data);
     setShowModal(true); // Show modal on play button click
   };
 
@@ -44,7 +38,7 @@ const PlayMedia = ({id}) => {
   return (
     <>
       <div className='absolute inset-0 hidden place-content-center bg-black/50 group-hover:grid'>
-        <button className='flex items-center gap-3 hover:opacity-50 transition-all duration-500 ease-in-out bg-playBgHalfOpacity p-2 w-[110px] rounded-full' onClick={handlePlay}>
+        <button className='flex items-center gap-3 bg-playBgHalfOpacity p-2 w-[110px] rounded-full' onClick={handlePlay}>
           <Image src='/assets/icon-play.svg' width={33} height={27} />
           <span className="text-lg font-medium">Play</span>
         </button>
@@ -55,13 +49,15 @@ const PlayMedia = ({id}) => {
         <div className={styles.modalOverlay} onClick={closeModal} aria-modal="true" role="dialog">
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             {/* Embed video */}
+            {videoData && (
               <iframe
-                title={"Baraka Trailer"}
-                src={id ? (videoURLS.length > 0 ? `https://www.youtube.com/embed/${videoURLS[0].key}` : `https://www.youtube.com/embed/${videoData.results[0].key}`) : "https://www.youtube.com/embed/ZSfFHxyYJJA?si=ee7LA3N_JvRm1iIo" }
+                title={videoData.name}
+                src={videoData[0].player_url}
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
               ></iframe>
+            )}
           </div>
-          <button className='absolute text-4xl text-accent hover:text-white md:top-2 right-5 top-16' onClick={closeModal} aria-label="Close Modal">CLOSE X</button>
+          <button className='absolute text-4xl text-accent hover:text-white md:top-2 right-5 top-16' onClick={closeModal} aria-label="Close Modal">X</button>
         </div>
       )}
     </>

@@ -20,14 +20,19 @@ const links = [
         icon: "tv-series",
     },
     {
-        title: "Bookmarked",
-        path: "/bookmarked",
-        icon: "bookmarked",
-    },
-    {
         title: "AnimeAPI",
         path: "/animesapi",
         icon: "anime",
+    },
+    {
+        title: "tmdb",
+        path: "/tmdb",
+        icon: "tmdb",
+    },
+    {
+        title: "Bookmarked",
+        path: "/bookmarked",
+        icon: "bookmarked",
     },
 ]
 
@@ -44,7 +49,7 @@ const Navbar = () => {
                 ))}
             </div>
             <Link href='/login' className='md:mt-auto'>
-                <Image src="/assets/image-avatar.png" className='border rounded-full' width={30} height={30}>
+                <Image src="/assets/image-avatar.png" className='border rounded-full hover:scale-[1.2] hover:opacity-75 transition-all duration-500 ease-in-out'  width={30} height={30}>
                 </Image>
             </Link>
         </div>

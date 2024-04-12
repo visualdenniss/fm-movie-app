@@ -130,3 +130,27 @@ export async function fetchAnimeVideo(id) {
 
   return data;
 }
+
+const tmdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc';
+const tmdbOptions = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${process.env.TMDB_HEADER}`
+  }
+};
+
+export async function getMoviesFromTMDB() {
+    const response = await fetch(tmdbUrl, tmdbOptions);
+    const data = await response.json();
+    return data;
+  }
+
+  export async function fetchTMDBVideo(id) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, 
+      tmdbOptions
+    );
+    const data = await response.json();
+    return data;
+  }

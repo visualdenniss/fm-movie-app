@@ -10,8 +10,9 @@ import AnimeThumbnail from '../Thumbnail/AnimeThumbnail'
 let page = 1;
 
 function LoadMore() {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({  margin: "0px 0px -500px 0px"});
   const [data, setData] = useState([]);
+
 
   useEffect(() => {
     if (inView) {

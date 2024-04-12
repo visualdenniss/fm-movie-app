@@ -15,7 +15,7 @@ const Bookmark = ({isBookmarked, id}) => {
   }
 
     return (
-        <button className='absolute right-2 top-2 z-50 grid h-8 w-8 cursor-pointer place-content-center rounded-full bg-bgHalfOpacity transition-all hover:bg-text hover:text-bg md:right-4 md:top-4' onClick={handleBookmark}>
+        <button className='absolute right-2 top-2 z-50 grid h-8 w-8 cursor-pointer place-content-center rounded-full bg-bgHalfOpacity transition-all hover:bg-text transition-all duration-500 ease-in-out hover:text-bg md:right-4 md:top-4' onClick={handleBookmark}>
             {
                 isBookmarked ? 
                 <BookmarkFull/> 
