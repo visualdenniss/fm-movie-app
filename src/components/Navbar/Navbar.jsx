@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './navbar.module.css'
 import NavLink from './Link';
+import Logout from '@/app/(auth)/logout';
+import { auth } from '@/lib/auth';
 
 const links = [
     {
@@ -36,7 +38,10 @@ const links = [
     },
 ]
 
-const Navbar = () => {
+const Navbar = async () => {
+
+    const session = await auth();
+
     return (
         <div className={`bg-bgSecondary md:p-8 p-4 flex md:flex-col max-md:justify-between items-center md:rounded-lg ${styles.navbar}`}>
                 <Link href='/'>
@@ -48,10 +53,17 @@ const Navbar = () => {
                     <NavLink link={link}/>
                 ))}
             </div>
-            <Link href='/login' className='md:mt-auto'>
-                <Image src="/assets/image-avatar.png" className='border rounded-full hover:scale-[1.2] hover:opacity-75 transition-all duration-500 ease-in-out'  width={30} height={30}>
-                </Image>
-            </Link>
+            <div className='md:mt-auto flex flex-col gap-6 items-center'>
+                { session && 
+                    <Logout/>}
+                <Link href='/login'>
+                    {session ? ( <Image src={session.user.image ? session.user.image : "/assets/noavatar.png"} className='border rounded-full hover:scale-[1.2] hover:opacity-75 transition-all duration-500 ease-in-out'  width={30} height={30}>
+                    </Image>): (
+                    <Image src="/assets/image-avatar.png" className='border rounded-full hover:scale-[1.2] hover:opacity-75 transition-all duration-500 ease-in-out'  width={30} height={30}>
+                    </Image>) }
+ 
+                </Link>
+            </div>
         </div>
     )
 }

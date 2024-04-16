@@ -1,4 +1,5 @@
 
+import Pagination from '@/components/Pagination/Pagination';
 import { Suspense } from 'react';
 import Loading from '../../../components/loading'
 import TmdbList from './tmdbList';
@@ -8,15 +9,17 @@ const TMDB = async () => {
 <div className='flex-1 px-4 flex flex-col md:pt-5 gap-6'>
         <main className='h-screen max-h-screen overflow-y-scroll'>
         <section className=' space-y-6 lg:mx-0'>
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center gap-7'>
                 <h2 className='text-[20px] md:text-3xl font-light'><TmdbLogo/></h2>
-                <nav>
+                {/* <nav>
                     <ul className='flex gap-3'>
                         <li>Movies</li>
                         <li>TV Shows</li>
                     </ul>
-                </nav>
-                <div>Pagination</div>
+                </nav> */}
+                <div className=' border'>
+                    <Pagination/>
+                </div>
             </div>
             <ul className='medialist'>
             <Suspense fallback={<Loading/>}>

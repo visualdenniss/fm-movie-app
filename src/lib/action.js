@@ -93,6 +93,31 @@ export const getBookmarked = async (query) => {
     }
 }
 
+export const getUserBookmarks = async (userId) => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Fetch user document based on userId
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return { error: "User not found" };
+        }
+
+        // Extract the bookmarks array from the user document
+        const { bookmarks } = user;
+
+        // Fetch bookmarked media items using the bookmarks array
+        const bookmarkedList = await Media.find({ _id: { $in: bookmarks } });
+
+        return bookmarkedList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
 export const getTrendingList = async () => {
     try {
         // Connect to the database if not already connected

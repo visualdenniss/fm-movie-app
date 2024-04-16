@@ -37,8 +37,15 @@ Loading Skeleton +
 Search Functions +
 Fix jarring Skeleton +
 Query Data directly instead of filter/map with JS after getting all the media list. +
-Login with Social Media
-Add Social Media Acc to users database
+Use 3rd party API +
+Play Embedded Media +
+Login with Social Media +
+Add Social Media Acc to users database +
 Animations
 Pagination.
-Use 3rd party API
+
+Login / Logout +
+Create userSchema +
+Add user to database after login +
+Add redirect after login / logout +
+Add ways to store users bookmarks and display them -
