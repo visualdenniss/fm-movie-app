@@ -1,19 +1,25 @@
 import Bookmark from '@/components/Bookmark/Bookmark';
 import PlayMedia from '@/components/PlayMedia/PlayMedia';
+import StarHandler from '@/components/Star/Star';
 import { getIconPath } from '@/lib/utils';
 import Image from 'next/image'
 
 
-const TrendingThumbnail = ({media}) => {
-
+const TrendingThumbnail = ({media, user, bookmarks}) => {
     const iconPath = getIconPath(media.category);
+    const id = media._id.toString()
+    const bookmarked = bookmarks.indexOf(id) !== -1 
 
     return (
-        <li key={media._id}>
+        <li key={id}>
             <figure className='relative flex flex-col gap-2'>
                 <div className='group cursor-pointer relative overflow-hidden rounded-lg  md:w-[470px] md:h-[230px] w-[240px] h-[140px]'>
                     <Image src={media.thumbnail.regular.large.substring(1)} fill style={{objectFit:'cover'}}/>
-                    <Bookmark isBookmarked = {media.isBookmarked} id={media._id.toString()} />
+                    {user ? <StarHandler user={user} id={id} bookmarked={bookmarked}/>
+                    : 
+                    <Bookmark isBookmarked = {media.isBookmarked} id={id}
+                    />
+                    }
                     <PlayMedia/>
                 </div>
                 <figcaption className='absolute bottom-[20px] left-4 z-50 flex flex-col gap-1'>

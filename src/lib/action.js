@@ -1,7 +1,7 @@
 "use server"
 
 // import { unstable_noStore as noStore } from 'next/cache';
-import { Media } from "./models";
+import { Media, User } from "./models";
 import { connectToDb } from "./utils"
 
 export const getMediaList = async (query) => {
@@ -93,13 +93,16 @@ export const getBookmarked = async (query) => {
     }
 }
 
-export const getUserBookmarks = async (userId) => {
+export const getUserBookmarks = async (email) => {
     try {
         // Connect to the database if not already connected
         connectToDb();
 
-        // Fetch user document based on userId
-        const user = await User.findById(userId);
+        // Fetch user document based on email
+        const user = await User.findOne({ email });
+            if (!user) {
+                return { error: "User not found" };
+            }
 
         if (!user) {
             return { error: "User not found" };
@@ -112,6 +115,97 @@ export const getUserBookmarks = async (userId) => {
         const bookmarkedList = await Media.find({ _id: { $in: bookmarks } });
 
         return bookmarkedList;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getUserBookmarksIDs = async (email) => {
+    try {
+        // Connect to the database if not already connected
+        connectToDb();
+
+        // Fetch user document based on email
+        const user = await User.findOne({ email });
+            if (!user) {
+                return { error: "User not found" };
+            }
+
+        if (!user) {
+            return { error: "User not found" };
+        }
+
+        // Extract the bookmarks array from the user document
+        const { bookmarks } = user;
+        
+        return bookmarks;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const toggleUserBookmarks = async (email, id) => {
+    try {
+        connectToDb();
+        // Find the user by email
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return { error: "User not found" };
+        }
+
+        // Create a copy of the user's bookmarks array
+        let newBookmarksArray = [...user.bookmarks];
+
+        // Check if the ID exists in the bookmarks array
+        const index = newBookmarksArray.indexOf(id);
+        let updateType; 
+        if (index !== -1) {
+           // If ID exists, remove it from the array
+           newBookmarksArray.splice(index, 1);
+           updateType = 'removed'
+        } else {
+           // If ID doesn't exist, add it to the array
+           newBookmarksArray.push(id);
+           updateType = 'added'
+        }
+
+        // Update the user's bookmarks array in the database
+        await User.findByIdAndUpdate(
+            user._id,
+            { $set: { bookmarks: newBookmarksArray } },
+            { new: true } // This option ensures that the updated document is returned
+        );       
+        return updateType;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getSomeBookmarks = async () => {
+    const bookmarksWithIDs = ['66105be52d1c8deab7511cd6','66105be52d1c8deab7511cdb', '66105be52d1c8deab7511ceb']
+    try {
+        connectToDb(); 
+        const list = await Media.find({_id: {$in: bookmarksWithIDs}});
+        return list;
+    } catch (err) {
+        console.log(err);
+        return { error: "Couldn't connect to database" };
+    }
+}
+
+export const getUserByEmail = async (email) => {
+    try {
+        connectToDb(); 
+        // Fetch user document based on email
+        const user = await User.findOne({ email });
+        if (!user) {
+            return { error: "User not found" };
+        }
+        return user; 
     } catch (err) {
         console.log(err);
         return { error: "Couldn't connect to database" };
@@ -179,3 +273,4 @@ export async function getMoviesFromTMDB() {
     const data = await response.json();
     return data;
   }
+
