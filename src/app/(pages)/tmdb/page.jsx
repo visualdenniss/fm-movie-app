@@ -4,26 +4,38 @@ import { Suspense } from 'react';
 import Loading from '../../../components/loading'
 import TmdbList from './tmdbList';
 
-const TMDB = async () => {
+const TMDB = async ({searchParams}) => {
+    let page = searchParams?.page || 1
+   if(searchParams?.page > 500) {
+       page = 500
+   } 
+   if(searchParams?.page < 1) {
+       page = 1
+   } 
+   if (isNaN(searchParams?.page)) {
+    page = 1;
+    }
+   
+
     return (
 <div className='flex-1 px-4 flex flex-col md:pt-5 gap-6'>
         <main className='h-screen max-h-screen overflow-y-scroll'>
         <section className=' space-y-6 lg:mx-0'>
-            <div className='flex items-center gap-7'>
-                <h2 className='text-[20px] md:text-3xl font-light'><TmdbLogo/></h2>
+            <div className='flex flex-col items-center justify-center gap-7'>
+                <h2 className='text-[20px] md:text-3xl mt-3 font-light'><TmdbLogo/></h2>
                 {/* <nav>
                     <ul className='flex gap-3'>
                         <li>Movies</li>
                         <li>TV Shows</li>
                     </ul>
                 </nav> */}
-                <div className=' border'>
+                <div className=''>
                     <Pagination/>
                 </div>
             </div>
             <ul className='medialist'>
             <Suspense fallback={<Loading/>}>
-                <TmdbList/>
+                <TmdbList page={page}/>
             </Suspense>
             </ul>
     </section>

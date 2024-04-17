@@ -1,10 +1,14 @@
 import MediaList from "@/components/MediaList/MediaList";
 import { getUserBookmarks } from "@/lib/action"
 import { auth } from "@/lib/auth";
+import { redirect } from 'next/navigation'
 
 const UserBookmarks = async () => {
 
     const session = await auth();
+    if(!session) {
+        redirect('/')
+    }
     const list = await getUserBookmarks(session?.user.email); 
 
     return (

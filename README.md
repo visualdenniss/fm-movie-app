@@ -48,18 +48,22 @@ Login / Logout +
 Create userSchema +
 Add user to database after login +
 Add redirect after login / logout +
-Add ways to store users bookmarks and display them -
+Add ways to store users bookmarks and display them +
 
-UPDATE
+UPDATE +++
 function to add and remove bookmarks of the user:
 onClick call function with media ID and userEmail
 Find User, check bookmarks array, if ID is there, remove, if not add ID
 and save user.
 
-RENDER:
+RENDER +++
 state of bookmarks should be passed down from the component that gets session info, find user, when passing the list, pass the list of bookmarks, from then, simple method to if array included, media.id, pass true to Star Component.
 
-BOOKMARKS:
+BOOKMARKS: (use Context API and don't update database)
 Only when not logged in.
 Initially, get List from from DB and save it into context, and render using this context.
 Get initial states of isBookmarked from list. On toggle, update the list, onClient only.
+
+Add Pagination Functionality on TMDB Page (prev ... 3 4 5 ... next)
+
+Optimize and Refactor Whole App Architecture

@@ -11,7 +11,7 @@ const BookmarkedPage = async ({searchParams}) => {
         <section className=' space-y-6 lg:mx-0'>
         <h2 className='text-[20px] md:text-3xl font-light'>Bookmarked</h2>
             <ul className='medialist'>
-            <Suspense fallback={<Loading/>}>
+                <Suspense fallback={<Loading/>}>
                     <Bookmarked query={query}/>
                 </Suspense>
             </ul>

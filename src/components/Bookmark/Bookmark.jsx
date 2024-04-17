@@ -4,13 +4,23 @@ import { toggleBookMark } from "@/lib/action"
 import { useRouter } from "next/navigation"
 import { toast } from 'sonner'
 
+
 const Bookmark = ({isBookmarked, id}) => {
-
+  // const {list, setList} = useAppContext();
+  // const isBookmarked = list.indexOf(id) !== -1;
   const router = useRouter();
-
+  // should take the updating function of context (state array)
   const handleBookmark = async () => {
     await toggleBookMark(isBookmarked, id)
     router.refresh();
+
+    // let newList = [...list]
+    // if (isBookmarked) {
+    //   setList(newList.filter((item)=> item !== id))
+    // }
+    // else {
+    //   setList([...newList,id])
+    // }
     if(isBookmarked) {
       toast('Bookmark removed')
     } else {

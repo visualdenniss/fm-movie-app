@@ -4,8 +4,8 @@ import { getMoviesFromTMDB } from "@/lib/action"
 import { getIconPath } from "@/lib/utils";
 import Image from 'next/image'
 
-const TmdbList = async () => {
-    const data = await getMoviesFromTMDB();
+const TmdbList = async ({page}) => {
+    const data = await getMoviesFromTMDB(page);
         return (
             data.results.map((movie)=> (
                 <li key={movie.id}>

@@ -250,7 +250,6 @@ export async function fetchAnimeVideo(id) {
   return data;
 }
 
-const tmdbUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc';
 const tmdbOptions = {
   method: 'GET',
   headers: {
@@ -259,7 +258,8 @@ const tmdbOptions = {
   }
 };
 
-export async function getMoviesFromTMDB() {
+export async function getMoviesFromTMDB(page) {
+    const tmdbUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
     const response = await fetch(tmdbUrl, tmdbOptions);
     const data = await response.json();
     return data;
