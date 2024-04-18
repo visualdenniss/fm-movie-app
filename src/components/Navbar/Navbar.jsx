@@ -53,9 +53,9 @@ const Navbar = async () => {
                     <NavLink link={link}/>
                 ))}
             </div>
-            <div className='md:mt-auto flex flex-col gap-6 items-center'>
+            <div className='md:mt-auto flex md:flex-col gap-6 justify-center items-center'>
                 { session && 
-                    <Logout/>}
+                <Logout/>}
                 <Link href='/login'>
                     {session ? ( <Image src={session.user.image ? session.user.image : "/assets/noavatar.png"} className='border rounded-full hover:scale-[1.2] hover:opacity-75 transition-all duration-500 ease-in-out'  width={30} height={30}>
                     </Image>): (

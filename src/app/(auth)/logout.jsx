@@ -10,7 +10,7 @@ const Logout = async () => {
     }
     
     return (
-        <form action={handleGithubLogOut} tooltip >
+        <form action={handleGithubLogOut} className='h-[25px]' >
             <button>
                 <LogoutIcon/>
             </button>

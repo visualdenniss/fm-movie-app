@@ -7,3 +7,11 @@
 .icon {
   fill: #fc4747;
 }
+
+@media screen and (max-width: 440px) {
+  .navbar {
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    gap: 20px;
+  }
+}

@@ -37,6 +37,16 @@
   }
 }
 
+@media only screen and (max-width: 374px) {
+  .medialist {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    /* grid-gap: 30px; */
+    place-items: center;
+    gap: 30px;
+  }
+}
+
 /* Spin the sharingan icon */
 
 .rotateOnHover {

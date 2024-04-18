@@ -1,6 +1,7 @@
 'use client'
 
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import styles from './pagination.module.css'
 
 const Pagination = () => {
 
@@ -38,7 +39,7 @@ const Pagination = () => {
         paginationBtns = [(currentPage-2), currentPage-1, currentPage]
     } 
     return (
-            <div class="flex items-center gap-4">
+            <div class={`flex items-center gap-4 ${styles.pagination}`}>
                 <button class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-white uppercase align-middle transition-all rounded-full select-none hover:bg-bgSecondary active:bg-soft disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" disabled={currentPage === 1} type="button"
                 onClick={() => handlePageChange(currentPage - 1)}
                 >
